@@ -1,29 +1,7 @@
-//****** jquery min ******//
-
-/*!
- * jQuery JavaScript Library v1.11.3
- * http://jquery.com/
- *
- * Includes Sizzle.js
- * http://sizzlejs.com/
- *
- * Copyright 2005, 2014 jQuery Foundation, Inc. and other contributors
- * Released under the MIT license
- * http://jquery.org/license
- *
- * Date: 2015-04-28T16:19Z
- */
-
+// latest
 (function( global, factory ) {
 
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
-		// For CommonJS and CommonJS-like environments where a proper window is present,
-		// execute the factory and get jQuery
-		// For environments that do not inherently posses a window with a document
-		// (such as Node.js), expose a jQuery-making factory as module.exports
-		// This accentuates the need for the creation of a real window
-		// e.g. var jQuery = require("jquery")(window);
-		// See ticket #14549 for more info
 		module.exports = global.document ?
 			factory( global, true ) :
 			function( w ) {
@@ -35,15 +13,7 @@
 	} else {
 		factory( global );
 	}
-
-// Pass this if window is not defined yet
 }(typeof window !== "undefined" ? window : this, function( window, noGlobal ) {
-
-// Can't do this because several apps including ASP.NET trace
-// the stack via arguments.caller.callee and Firefox dies if
-// you try to trace through "use strict" call chains. (#13335)
-// Support: Firefox 18+
-//
 
 var deletedIds = [];
 
@@ -591,16 +561,6 @@ function isArraylike( obj ) {
 		typeof length === "number" && length > 0 && ( length - 1 ) in obj;
 }
 var Sizzle =
-/*!
- * Sizzle CSS Selector Engine v2.2.0-pre
- * http://sizzlejs.com/
- *
- * Copyright 2008, 2014 jQuery Foundation, Inc. and other contributors
- * Released under the MIT license
- * http://jquery.org/license
- *
- * Date: 2014-12-16
- */
 (function( window ) {
 
 var i,
@@ -3551,7 +3511,7 @@ jQuery.ready.promise = function( obj ) {
 							// http://javascript.nwbox.com/IEContentLoaded/
 							top.doScroll("left");
 						} catch(e) {
-							return setTimeout( doScrollCheck, 50 );
+							return setTimeout( doScrollCheck, 1 );
 						}
 
 						// detach all dom ready events
@@ -7672,10 +7632,10 @@ jQuery.fx.stop = function() {
 };
 
 jQuery.fx.speeds = {
-	slow: 600,
+	slow: 100,
 	fast: 200,
 	// Default speed
-	_default: 400
+	_default: 300
 };
 
 
@@ -10374,41 +10334,20 @@ return jQuery;
     function chatAnim(){
 
         this.chatTexts = [{
-            deleteText: 'Hey lorem ipsum',
-            chatText:"Hi, I'm Ailira, your Artificially Intelligent Legal Information Research Assistant.",
+            // deleteText: 'Hey lorem ipsum',
+            chatText:"What is  /trak/?",
             chatFrom:"me"
         }, {
-            chatText:"what kind of questions should I ask you?",
+            chatText:"verb Engaging with buyers and sellers across the world and establishing lasting business relationships with them",
             chatFrom:"other"
         }, {
-            deleteText: 'Hey lorem ipsum',
-            chatText:"I can help you best when you ask me questions in natural language.",
+            // deleteText: 'Hey lorem ipsum',
+            chatText:"What is <trequer /> /treka/?",
             chatFrom:"me"
         }, {
-            chatText:"I can help you best when you ask me questions in natural language.",
-            chatFrom:"me"
-        }, {
-            deleteText: 'Hey lorem ipsum',
-            chatText:"what is a trust?",
+            chatText:"noun A person who enables businesses to engage with their customers and suppliers globally, in a smooth and hassle-free manner",
             chatFrom:"other"
-        }, {
-            chatText:"Here's what I found",
-            chatFrom:"me"
-        }, {
-            chatText:"A trust exists whenever legal title to real or personal property is vested in one person, called a trustee, for the benefit of another person, called a beneficiary",
-            chatFrom:"other"
-        }, {
-            deleteText: 'Hey lorem ipsum',
-            chatText:"Can the beneficiary of a bare trust claim the CGT main residence exemption?",
-            chatFrom:"me"
-        }, {
-            chatText:"Here's what I found",
-            chatFrom:"other"
-        }, {
-            deleteText: 'Hey lorem ipsum',
-            chatText:"If a 'bare trust' exists an exemption may be available to the beneficiary where the beneficiary occupies the dwelling. This is because the CGT provisions apply to an act done by the trustee as if it were an act done by the beneficiary where the beneficiary is absolutely entitled to CGT asset",
-            chatFrom:"me"
-        }]
+        },]
 
     }
 
@@ -10428,7 +10367,7 @@ return jQuery;
             $('.chat_main').append('<div class="chat_row chat_me"><div class="chat_pic"><img src="https://raw.githubusercontent.com/reachtokish/typing-animation/master/pic_me.jpg" alt="pic_me" /></div><div class="chat_text"><div class="chat_text_main"><p>'+chatText+'</p></div></div></div>');
         }
         else{
-            $('.chat_main').append('<div class="chat_row chat_other"><div class="chat_pic"><img src="https://raw.githubusercontent.com/reachtokish/typing-animation/master/pic_me.jpg" alt="pic_me" /></div><div class="chat_text"><div class="chat_text_main"><p>'+chatText+'</p></div></div></div>');
+            $('.chat_main').append('<div class="chat_row chat_other"><div class="chat_pic"><img src="https://raw.githubusercontent.com/reachtokish/typing-animation/master/pic_me.jpg" alt="pic_me" /></div><div class="chat_text"><div class="chat_text_main"><p><span class="count">1.<span> '+chatText+'</p></div></div></div>');
         }
         $('.chat_main .chat_row:last-child .chat_pic').show(0).css({'transform':'scale(1)'});
         $('.chat_main .chat_row:last-child .chat_text_main').show(0).css({'transform':'scale(1)'});
@@ -10445,23 +10384,23 @@ return jQuery;
             if(_this.chatTexts[counter]['deleteText']){
                 $("#chat_input").typed({
                     strings: [_this.chatTexts[counter]['deleteText'], thisChatText],
-                    typeSpeed: 50,
+                    typeSpeed: 0.1,
                     callback: function(){
                         chatText = $("#chat_input").text();
                         setTimeout(function(){
                             _this.appendChat(chatText, thisChatFrom);
                             $("#chat_input").text('');
-                        }, 1000)
+                        }, 1)
 
-                        if(counter == 9){
+                        if(counter == 0){
                             setTimeout(function(){
                                 _this.pushTotyped(counter+1);
-                            }, 5000)
+                            }, 3)
                         }
                         else{
                             setTimeout(function(){
                                 _this.pushTotyped(counter+1);
-                            }, 2000)
+                            }, 2)
                         }
                     },
                     preStringTyped: function(){
@@ -10472,23 +10411,23 @@ return jQuery;
             else{
                 $("#chat_input").typed({
                     strings: [thisChatText],
-                    typeSpeed: 50,
+                    typeSpeed: 0.1,
                     callback: function(){
                         chatText = $("#chat_input").text();
                         setTimeout(function(){
                             _this.appendChat(chatText, thisChatFrom);
                             $("#chat_input").text('');
-                        }, 1000)
+                        }, 0.1)
 
-                        if(counter == 9){
+                        if(counter == 0){
                             setTimeout(function(){
                                 _this.pushTotyped(counter+1);
-                            }, 5000)
+                            }, 0.3)
                         }
                         else{
                             setTimeout(function(){
                                 _this.pushTotyped(counter+1);
-                            }, 2000)
+                            }, 0.2)
                         }
                     },
                     preStringTyped: function(){
@@ -10501,23 +10440,23 @@ return jQuery;
             if(_this.chatTexts[counter]['deleteText']){
                 $("#chat_input").typed({
                     strings: [_this.chatTexts[counter]['deleteText'], thisChatText],
-                    typeSpeed: 50,
+                    typeSpeed: 0.1,
                     callback: function(){
                         chatText = $("#chat_input").text();
                         setTimeout(function(){
                             _this.appendChat(chatText, thisChatFrom);
                             $("#chat_input").text('');
-                        }, 1000)
+                        }, 0.1)
 
-                        if(counter == 9){
+                        if(counter == 0){
                             setTimeout(function(){
                                 _this.pushTotyped(counter+1);
-                            }, 5000)
+                            }, 0.3)
                         }
                         else{
                             setTimeout(function(){
                                 _this.pushTotyped(counter+1);
-                            }, 2000)
+                            }, 0.2)
                         }
                         $('.typing_gif').hide();
                     },
@@ -10529,18 +10468,18 @@ return jQuery;
             else{
                 $("#chat_input").typed({
                     strings: [thisChatText],
-                    typeSpeed: 50,
+                    typeSpeed: 0.1,
                     callback: function(){
                         chatText = $("#chat_input").text();
                         setTimeout(function(){
                             _this.appendChat(chatText, thisChatFrom);
                             $("#chat_input").text('');
-                        }, 1000)
+                        }, 0.1)
 
-                        if(counter == 9){
+                        if(counter == 0){
                             setTimeout(function(){
                                 _this.pushTotyped(counter+1);
-                            }, 5000)
+                            }, 0.3)
                         }
                         else{
                             setTimeout(function(){
@@ -10566,3 +10505,5 @@ return jQuery;
     }, 50)
 
 }(jQuery));
+
+
